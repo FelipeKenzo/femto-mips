@@ -1,0 +1,42 @@
+$date
+  Sat Jul 11 22:19:06 2020
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module numeric_std $end
+$upscope $end
+$scope module comparator_tb $end
+$var reg 32 ! a[31:0] $end
+$var reg 32 " b[31:0] $end
+$var reg 1 # equal $end
+$scope module uut $end
+$var reg 32 $ a[31:0] $end
+$var reg 32 % b[31:0] $end
+$var reg 1 & equal $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b00000000000000001111111110111010 !
+b00000000000000001111111110111011 "
+U#
+b00000000000000001111111110111010 $
+b00000000000000001111111110111011 %
+U&
+#250000
+b00000000000000001111111110111010 "
+0#
+b00000000000000001111111110111010 %
+0&
+#500000
+1#
+1&
+#750000

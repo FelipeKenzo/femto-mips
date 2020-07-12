@@ -1,0 +1,113 @@
+$date
+  Sun Jul 12 01:27:19 2020
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module numeric_std $end
+$upscope $end
+$scope module regfile_tb $end
+$var reg 5 ! read1[4:0] $end
+$var reg 5 " read2[4:0] $end
+$var reg 5 # write1[4:0] $end
+$var reg 32 $ data1[31:0] $end
+$var reg 32 % data2[31:0] $end
+$var reg 32 & writedata[31:0] $end
+$var reg 1 ' regwrite $end
+$var reg 1 ( rst $end
+$var reg 1 ) clk $end
+$var reg 1 * simulating $end
+$scope module uut $end
+$var reg 5 + read1[4:0] $end
+$var reg 5 , read2[4:0] $end
+$var reg 5 - write1[4:0] $end
+$var reg 32 . writedata[31:0] $end
+$var reg 1 / regwrite $end
+$var reg 1 0 rst $end
+$var reg 1 1 clk $end
+$var reg 32 2 data1[31:0] $end
+$var reg 32 3 data2[31:0] $end
+$comment data is not handled $end
+$var reg 32 4 aux1[31:0] $end
+$var reg 32 5 aux2[31:0] $end
+$var reg 32 6 waux[31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b00000 !
+b00001 "
+b00001 #
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU $
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU %
+b00000000111111110000000010101011 &
+0'
+1(
+0)
+1*
+b00000 +
+b00001 ,
+b00001 -
+b00000000111111110000000010101011 .
+0/
+10
+01
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU 2
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU 3
+b00000000000000000000000000000000 4
+b00000000000000000000000000000000 5
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU 6
+#4000000
+b00000000000000000000000000000000 $
+b00000000000000000000000000000000 %
+b00000000000000000000000000000000 2
+b00000000000000000000000000000000 3
+#5000000
+0(
+00
+#10000000
+b11101 !
+1)
+b11101 +
+11
+b00000000000000001111111111111111 4
+#14000000
+b00000000000000001111111111111111 $
+b00000000000000001111111111111111 2
+#20000000
+1'
+0)
+1/
+01
+#30000000
+1)
+11
+#34000000
+b00000000111111110000000010101011 5
+#38000000
+b00000000111111110000000010101011 %
+b00000000111111110000000010101011 3
+#40000000
+b00000 !
+b00000 #
+0)
+b00000 +
+b00000 -
+01
+b00000000000000000000000000000000 4
+#44000000
+b00000000000000000000000000000000 $
+b00000000000000000000000000000000 2
+#50000000
+1)
+11
+#58000000
+0*
+#60000000
