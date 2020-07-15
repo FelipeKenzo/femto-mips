@@ -21,7 +21,7 @@ entity reg is
 	);
 end entity;
 
-architecture save of reg is
+architecture timing of reg is
 	signal Qi: std_logic_vector(size - 1 downto 0) := std_logic_vector(to_unsigned(def, size));
 begin
 

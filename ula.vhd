@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity ula is
     generic (
-        wordSize : integer := 32 -- Para fins de testbench.
+        wordSize : integer := 32; -- Para fins de testbench.
         -- Timing
         Tadd : time := 1000 ps;
         Tsub : time := 1250 ps
@@ -21,7 +21,7 @@ end entity;
 
 architecture comportamental of ula is
     -- Operações
-    signal aux_or  : std_logic_vector(wordSize-1 downto 0) := (others => '0');
+    signal aux_sll : std_logic_vector(wordSize-1 downto 0) := (others => '0');
     signal aux_and : std_logic_vector(wordSize-1 downto 0) := (others => '0');
     signal aux_add : std_logic_vector(wordSize   downto 0) := (others => '0'); -- Tem um bit a mais para detectar overflow
     signal aux_sub : std_logic_vector(wordSize   downto 0) := (others => '0'); -- Tem um bit a mais para detectar overflow
@@ -40,8 +40,8 @@ begin
     -- Controle = 000 (AND):
     aux_and <= A AND B;
 
-    -- Controle = 001 (OR):
-    aux_or <= A OR B;
+    -- Controle = 001 (SLL):
+    aux_sll <= std_logic_vector(shift_left(unsigned(B), to_integer(unsigned(A(10 downto 6)))));
 
     -- Controle = 010 (Add unsigned) e 011 (Add unsigned):
     -- Para realizar uma soma de 'std_logic_vector', primeiro converto  A e B para o tipo 'unsigned' e depois reconverto o resultado
@@ -49,7 +49,7 @@ begin
     -- 
     -- OBS: O resultado de uma soma/subtração signed e unsigned é exatamente o mesmo, a nível de bits. Muda só a sua interpretação.
     aux_cin(0) <= VemUm;
-    aux_add    <= std_logic_vector(unsigned('0' & A) + unsigned(B) + unsigned(aux_cin)) after Tsoma;
+    aux_add    <= std_logic_vector(unsigned('0' & A) + unsigned(B) + unsigned(aux_cin)) after Tadd;
     
     -- Controle = 100 (select on less than): olha-se apenas o sinal da subtração de A e B.
     aux_slt    <= (0      => aux_sub(wordSize-1),
@@ -63,14 +63,14 @@ begin
 
     -- Saída C: Multiplexação da saída usando a entrada Controle como chave.
     with Controle select aux_c <=
-        aux_and                     when "000",
-        aux_or                      when "001",
+        aux_nop                      when "000",
+        aux_sll                      when "001",
         aux_add(wordSize-1 downto 0) when "010",
         aux_add(wordSize-1 downto 0) when "011",
-        aux_slt                     when "100",
+        aux_slt                      when "100",
         aux_sub(wordSize-1 downto 0) when "101",
         aux_sub(wordSize-1 downto 0) when "110",
-        aux_nop                     when others;
+        aux_nop                      when others;
 
     C <= aux_c;
     
